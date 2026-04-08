@@ -1,25 +1,24 @@
-const lista = Array.from({ length: 128 }, (_,i) => i+1)
+const list = Array.from({ length: 128 }, (_, i) => i + 1)
 
-function pesquisaBinaria(lista, item) {
-    let baixo = 0
-    let alto = lista.length - 1
-    let etapas = 0
+function binarySearch(list, item) {
+    let low = 0
+    let high = list.length - 1
+    let steps = 0
 
-    while (baixo <= alto) {
-        etapas++
+    while (low <= high) {
+        steps++
 
-        let meio = Math.floor((baixo + alto) / 2)
-        let chute = lista[meio]
+        let mid = Math.floor((low + high) / 2)
+        let guess = list[mid]
 
-        if (chute === item) {
-            return `Etapas: ${etapas} | R: ${meio}`
+        if (guess === item) {
+            return `Steps: ${steps} | Index: ${mid}`
         }
-        if (chute > item) {
-            alto = meio - 1
+        if (guess > item) {
+            high = mid - 1
         } else {
-            baixo = meio + 1
+            low = mid + 1
         }
-
     }
 
     return
